@@ -32,7 +32,7 @@ print li
 
 
 
-简化通过for循环
+简化通过for循环#  鎺掑簭
 
 #!/usr/bin/env python
 #coding:utf-8
