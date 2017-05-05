@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+ï»¿#!/usr/bin/env python
 #coding:utf-8
 
 
@@ -32,7 +32,7 @@ print li
 
 
 
-¼ò»¯Í¨¹ıforÑ­»·#  æ’åº
+¼ò»¯Í¨¹ıforÑ­»·#  æˆ‘é˜¿é“å¤«ä¸‰ä»½  
 
 #!/usr/bin/env python
 #coding:utf-8
