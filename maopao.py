@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 #coding:utf-8
 
 
@@ -31,8 +31,7 @@ print li
 
 
 
-
-��ͨ��forѭ��#  我阿道夫三份  
+# 简化通过for循环
 
 #!/usr/bin/env python
 #coding:utf-8
