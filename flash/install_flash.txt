@@ -1,0 +1,10 @@
+#centos7.2 安装pip
+1、 yum -y install epel-release
+2、 yum -y install python-pip
+3、pip2.7 install flask
+4、flask使用方法
+1.引入flask相关模块
+2.新建网页app
+3.监听路由
+4.启动app（监听端口）
+
