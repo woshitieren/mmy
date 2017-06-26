@@ -1,0 +1,20 @@
+{% if user == 'admin' %}
+add user form
+{% endif %}
+<hr >
+{{user}}
+<a href='/logout'>logout</a>
+<table border="1">
+	{% for u in users %}
+	<tr>  
+	   <td>{{u[0]}}</td>	
+	   <td>{{u[1]}}</td>	
+	   <td>
+	{% if user == 'admin' %}
+		<a href='/delete?user={{u[0]}}'>delete</a>'
+		<a href='/updatepwd?user={{u[0]}}'>update</a>'
+	{% endif %}
+	</td>
+	</tr>
+	{% endfor %}
+</table>

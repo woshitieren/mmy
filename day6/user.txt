@@ -1,0 +1,5 @@
+admin:admin
+python:123
+girl:yuxue
+woniu:123456
+zabbix:123
