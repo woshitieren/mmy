@@ -1,0 +1,24 @@
+{% if user == 'admin' %}
+<form action='/adduser' method='post'>
+user<input type='text' name='user'>
+pwd<input type='text' name='pwd'>
+<input type='submit' value='add'>
+</form>
+{% endif %}
+<hr >
+{{user}}
+<a href='/logout'>logout</a>
+<table border="1">
+	{% for u in users %}
+	<tr>  
+	   <td>{{u[0]}}</td>	
+	   <td>{{u[1]}}</td>	
+	   <td>
+	{% if user == 'admin' %}
+		<a href='/delete?user={{u[0]}}'>delete</a>'
+		<a href='/updatepwd?user={{u[0]}}'>update</a>'
+	{% endif %}
+	</td>
+	</tr>
+	{% endfor %}
+</table>

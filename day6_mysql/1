@@ -1,0 +1,20 @@
+<!-- table边框为1像素，这个数值越大，边框就越粗 
+<table>代表表格</table> 
+<tr>代表表格中的一行</tr> 
+<td>代表表格中的一列</td>
+'tr'与'td'交成一个单元格
+<table>...</table>之间有多少个<tr>，就有多少行
+<tr>...</tr>之间有多少个<td>，就有多少列
+-->
+<table border='1'> 
+{% for p in pc %}
+<tr>
+
+<td>   </td>
+</tr>
+
+
+
+
+{% endfor %}
+</table>
