@@ -12,6 +12,17 @@ app = Flask(__name__)
 import util
 #user random
 app.secret_key='fdsaffgdafafdssdfsadfs'
+num=0
+@app.route('/ajax')
+def ajax():
+	return render_template('ajax.html')
+@app.route('/ajaxdata')
+def ajaxdata():
+	global num
+	num +=1
+	#return 'hello world,%s'%num
+	with open('msg.txt') as f:
+		return f.read()+str(num)
 @app.route('/pc',methods=['GET','POST'])
 def pc():
 	mem = request.args.get('mem')
@@ -36,15 +47,21 @@ def pc():
 			pc_list.append(item)
 #	if request.method=='GET':
 	return render_template('pc.html',memorder=memorders,pc=pc_list,mem_list=sorted(mem_list))
-@app.route('/adduser',methods=['POST'])
+@app.route('/adduser')
 def adduser():
-	user=request.form.get('user')
-	pwd=request.form.get('pwd')
+	user=request.args.get('user')
+	pwd=request.args.get('pwd')
 	if (not user) or (not pwd):
 		return 'need username and password'
 	sql = 'insert into user values ("%s","%s")'%(user,pwd)
 	cur.execute(sql)
-	return redirect('/')
+#	return redirect('/')
+	return 'ok'
+@app.route('/usertemp')
+def usertemp():
+	cur.execute('select * from user')
+	res=cur.fetchall()
+	return render_template('usertemp.html',users=res)
 @app.route('/')
 def index():
 	if 'user' in session:
@@ -74,7 +91,8 @@ def removeuser():
 	user=request.args.get('user')
 	sql = 'delete from user where username="%s"'%(user)
 	cur.execute(sql)
-	return redirect('/')
+#	return redirect('/')
+	return 'ok'
 @app.route('/logout')
 def logout():
 	del session['user']

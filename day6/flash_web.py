@@ -9,6 +9,11 @@ app = Flask(__name__)
 import util
 #user random
 app.secret_key='fdsaffgdafafdssdfsadfs'
+#request.form.get("key", type=str, default=None) 获取表单数据
+
+#request.args.get("key") 获取get请求参数
+
+#request.values.get("key") 获取所有参数
 @app.route('/')
 def index():
 	if 'user' in session:

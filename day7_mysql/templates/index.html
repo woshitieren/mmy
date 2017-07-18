@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+<!--
+<form action='/adduser' method='post'>
+user<input type='text' name='user'>
+pwd<input type='text' name='pwd'>
+<input type='submit' value='add' class="btn btn-success">
+</form>
+-->
+<hr >
+{{user}}
+<a href='/logout'>logout</a>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-6 col-md-offset-3'>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  adduser
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+<form id='adduser-form' class="form-inline" method='post'>
+  <div class="form-group">
+    <label for="exampleInputName2">User</label>
+    <input type="text" class="form-control" id='adduser-input'  name='user' placeholder="用户名">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Pwd</label>
+    <input type="text" class="form-control" id='addpwd-input' name='pwd' placeholder="密码">
+  </div>
+</form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id='confirm-adduser'>Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class='row'>
+<div class='col-md-4 col-md-offset-4'>
+<table id='user-table' class="table table-bordered table-hover">
+</table>
+</div>
+</div>
+</div>
+<input type='text'>
+<script src='/static/bootstrap/js/jquery.min.js'></script>
+<script src='/static/bootstrap/js/bootstrap.js'></script>
+
+<script>
+$(document).on('click','.deluser-btn',function(){
+var user=$(this).data('user')
+$.get('delete?user='+user,function(res){
+
+if (res=='ok')
+{
+alert('删除成功')
+getUser()
+}
+})
+
+})
+function getUser(){
+	$.get('/usertemp',function(data){
+	$('#user-table').html(data)
+
+})
+
+}
+getUser()
+	
+$('#confirm-adduser').on('click',function(){
+        var user=$('#adduser-input').val()
+        var pwd=$('#addpwd-input').val()
+        var url='/adduser?user='+user+'&pwd='+pwd
+        $.get(url,function(data){
+                if(data=='ok'){
+		$('#myModal').modal('hide')
+		$('#adduser-form')[0],reset()
+		getUser()
+        }
+
+   })
+
+})
+
+
+</script>
